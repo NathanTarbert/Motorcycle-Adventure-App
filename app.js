@@ -3,7 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-// const mongoose = require('mongoose');
+const mongoose = require('mongoose');
 const hbs = require('hbs');
 // var passport = require('passport');
 // var LocalStrategy = require('passport-local').Strategy;
@@ -11,17 +11,17 @@ const hbs = require('hbs');
 // const methodOverride = require('method-override');
 var app = express();
 
-//mongoose connection
-// require('dotenv').config();//pass in your sensative info into the .env file so that your info is protected.
-// mongoose.connect(process.env.DB_URI,  {
-//     dbName: process.env.DB_NAME,
-//     user: process.env.DB_USER,
-//     pass: process.env.DB_PASS,
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true,
-//   })
-//     .then( (res) => console.log('db connected'))
-//     .catch((err) => console.log(err));
+// mongoose connection
+require('dotenv').config();//pass in your sensative info into the .env file so that your info is protected.
+mongoose.connect(process.env.DB_URI,  {
+    dbName: process.env.DB_NAME,
+    user: process.env.DB_USER,
+    pass: process.env.DB_PASS,
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+    .then( (res) => console.log('db connected'))
+    .catch((err) => console.log(err));
 
 // passport config
 // app.use(require('express-session')({
@@ -38,17 +38,17 @@ var app = express();
 // passport.deserializeUser(User.deserializeUser());
 
 //unauthorized users
-// var loginRouter = require('./routes/login.js');
-// var registerRouter = require('./routes/register');
+var loginRouter = require('./routes/login.js');
+var registerRouter = require('./routes/register');
 var indexRouter = require('./routes/index');
 // var aboutRouter = require('./routes/about');
 // var searchRouter = require('./routes/search');
 
 //authorized users
-// var createRouter = require('./routes/create');
-// var detailsRouter = require('./routes/details');
-// var attachAccessoriesRouter = require('./routes/attachAccessory');
-// var editCubeRouter = require('./routes/edit');
+var createRouter = require('./routes/create');
+var detailsRouter = require('./routes/details');
+var userHomeRouter = require('./routes/user-index');
+var editCubeRouter = require('./routes/edit');
 // var deleteRouter = require('./routes/delete');
 
 // view engine setup
@@ -64,17 +64,17 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 //unauthorized users
-// app.use('/login', loginRouter);
-// app.use('/register', registerRouter);
+app.use('/login', loginRouter);
+app.use('/register', registerRouter);
 app.use('/', indexRouter);
 // app.use('/about', aboutRouter);
 // app.use('/search', searchRouter);
 
 //authorized users
-// app.use('/create', createRouter);
-// app.use('/details', detailsRouter);
-// app.use('/attach/accessory', attachAccessoriesRouter);
-// app.use('/edit', editCubeRouter);
+app.use('/create', createRouter);
+app.use('/course-details', detailsRouter);
+app.use('/user/home', userHomeRouter);
+app.use('/edit', editCubeRouter);
 // app.use('/delete', deleteRouter);
 
 // catch 404 and forward to error handler
