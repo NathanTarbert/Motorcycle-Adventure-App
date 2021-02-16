@@ -1,10 +1,10 @@
 var express = require('express');
 var router = express.Router();
-// const passport = require('passport');
 
-/* GET home page. */
+/* GET user home page. */
+
 router.get('/', function(req, res, next) {  
-   res.render('guest-home');
+   res.render('user-home');
   });
 
-module.exports = router;
+  module.exports = router;
