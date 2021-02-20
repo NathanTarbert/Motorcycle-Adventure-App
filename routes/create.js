@@ -26,7 +26,7 @@ router.post('/', function(req, res, next) {
             video.save()
             .then((response) => {
                 // console.log(response);
-                res.redirect('home');
+                res.redirect('/home');
             });
         }else{
             let video = new Video({
@@ -39,7 +39,7 @@ router.post('/', function(req, res, next) {
             video.save()
             .then((response) => {
                 // console.log(response);
-                res.redirect('home');
+                res.redirect('/home');
             });
         }
     }catch(error){

@@ -53,7 +53,7 @@ router.post('/',[
                             return next(err);
                         }
                         // console.log('the User is', user);
-                        res.redirect('home');
+                        res.redirect('/home');
                     });
                 });
             }        

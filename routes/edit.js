@@ -19,7 +19,7 @@ router.post('/:id', async (req, res) => {
         video.name = data.name, 
         video.description = data.description, 
         video.imageUrl = data.imageUrl, 
-        video.difficulty = data.difficultyLevel,
+        video.isPulic = data.isPulic,
         await video.save();
         res.redirect('/home');
     }catch(err) {
