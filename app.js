@@ -49,7 +49,7 @@ var createRouter = require('./routes/create');
 // var enrollRouter = require('./routes/enroll');
 var detailsRouter = require('./routes/details');
 var userHomeRouter = require('./routes/user-index');
-// var editCubeRouter = require('./routes/edit');
+var editRouter = require('./routes/edit');
 var deleteRouter = require('./routes/delete');
 
 // view engine setup
@@ -76,7 +76,7 @@ app.use('/create', createRouter);
 // app.use('/details/enroll', enrollRouter);
 app.use('/course-details', detailsRouter);
 app.use('/home', userHomeRouter);
-// app.use('/edit', editCubeRouter);
+app.use('/edit', editRouter);
 app.use('/delete', deleteRouter);
 
 // catch 404 and forward to error handler
