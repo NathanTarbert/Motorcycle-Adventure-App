@@ -8,9 +8,6 @@ var User = new Schema({
     },
     password: {
         type: String,
-    },
-    enrolledCourses: {
-        
     }
 });
 
