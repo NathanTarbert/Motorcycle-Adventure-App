@@ -1,82 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
+ 
+ <div class="container">
+        <h1 class="my-4">Course title : {{video.title}}</h1>
 
-<head>
-    <meta charset="UTF-8">
-    <title>Express Retake Exam January 2019</title>
-    <link href="/stylesheets/site.css" type="text/css" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-</head>
-
-<body>
-    <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand">Video Tutorials</a>
-
-           <ul class="navbar-nav ml-auto">
-
-                <li class="nav-item">
-                    <a class="nav-link" href="/">Home </a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="/user/home">Welcome, </a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Logout</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="/login">Login</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="/register">Register</a>
-                </li>
-
-            </ul>
-        </nav>
-
-        <section class="notifications">
-            <p class="notification-message">Message...</p>
-        </section>
-
-        <main>
-            <div class="container">
-                <h1 class="my-4">Course title : ExpressJS
-                </h1>
-
-                <div class="row">
-
-                    <div class="col-md-8">
-                        <img class="img-fluid"
-                            src="https://blog.cyberpanel.net/wp-content/uploads/2019/03/express-js-cyberpanel.jpeg"
-                            alt="Express" />
-                    </div>
-
-                    <div class="col-md-4 text-center">
-                        <h3 class="my-3">Course Description</h3>
-                        <p>ExpressJS is ...</p>
-
-                        <a class="btn btn-danger" href="/">Delete</a>
-                        <a class="btn btn-warning" href="/">Edit</a>
-                        <span class="enrolled-span">You are already enrolled</span>
-                        <a class="btn btn-primary" href="/">Enroll</a>
-
-                    </div>
-                </div>
+        <div class="row">
+            
+            <div class="col-md-8">
+                <img class="img-fluid"
+                    src="{{video.imageUrl}}"
+                    alt="Express" />
             </div>
-        </main>
-
-        <footer class="page-footer font-small">
-            <div class="footer-copyright text-center py-3">© 2019
-                <a href="#/">Express Fundamentals</a>
+            {{#if user}}
+            <div class="col-md-4 text-center">
+                <h3 class="my-3">{{video.description}}</h3>
+                <p>{{video.createdAt}}</p>
+                
+                <form method="POST" action="/delete/{{video._id}}" enctype="application/x-www-form-urlencoded">
+                <input type="hidden" name="_method" value="DELETE">
+                <button type="submit">Delete Video</button>
+                </form>
+                <a class="btn btn-warning" href="/home">Edit</a>
+                <span class="enrolled-span">You are already enrolled</span>              
             </div>
-        </footer>
 
+                {{else}}
+                 <div class="col-md-4 text-center">
+                <h3 class="my-3">{{video.description}}</h3>
+                <p>{{video.createdAt}}</p>
+               
+                <a class="btn btn-primary" href="/">Enroll</a>
+            </div>
+                {{/if}}
+        </div>
     </div>
-</body>
-
-</html>
+       
