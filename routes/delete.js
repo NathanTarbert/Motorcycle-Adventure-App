@@ -9,14 +9,14 @@ router.post('/:id', async (req, res) => {
      try {
         video = await Video.findById(id);        
         await video.remove();
-        console.log('user delete', req.body);
-        res.render('/');
+        // console.log('user delete', req.body);
+        res.redirect('/home');
     }catch(err) {
         if(err) throw err;
             if (video == null) {
-                res.render('/');
+                res.redirect('/home');
             }else {
-                res.render(`/course-details/${video._id}`);
+                res.redirect(`/course-details/${video._id}`);
             }       
     }     
 });
