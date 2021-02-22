@@ -5,7 +5,7 @@ const Video = require('../models/video');
 /* GET logged in home page. */
 router.get('/', function(req, res, next) {
   Video.find().then((results) => {
-    console.log('user has made it to the /home page');
+    // console.log('user has made it to the /home page');
     res.render('home', { title:"Welcome to your home page", video: results, user: req.user });
   });
 });

@@ -43,7 +43,7 @@ var loginRouter = require('./routes/login');
 var registerRouter = require('./routes/register');
 var indexRouter = require('./routes/index');
 // var aboutRouter = require('./routes/about');
-// var searchRouter = require('./routes/search');
+var searchRouter = require('./routes/search');
 
 //authorized users
 var createRouter = require('./routes/create');
@@ -70,7 +70,7 @@ app.use('/login', loginRouter);
 app.use('/register', registerRouter);
 app.use('/', indexRouter);
 // app.use('/about', aboutRouter);
-// app.use('/search', searchRouter);
+app.use('/search', searchRouter);
 
 //authorized users
 app.use('/create', createRouter);
