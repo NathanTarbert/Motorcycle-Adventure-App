@@ -13,15 +13,6 @@
     margin-right: 20px;
 }
 
-h1 {
-    text-align: center;
-}
-
-h4 {
-    text-align: center;
-    color: rgb(48, 48, 49);
-}
-
 .badge {
     margin-left: 10px;
 }
@@ -46,8 +37,4 @@ h4 {
     font-style: italic;
     text-decoration: underline;
     box-shadow: 0 5px 10px #cccccc;
-}
-
-p.lead {
-    text-align: center;
 }
