@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var passportLocalMongoose = require('passport-local-mongoose');
+const Video = require('./video');
 
 var User = new Schema({
     username: {
@@ -8,7 +9,8 @@ var User = new Schema({
     },
     password: {
         type: String,
-    }
+    },
+    courses: [{ type: Schema.Types.ObjectId, ref: 'Video'}]
 });
 
 User.plugin(passportLocalMongoose);

@@ -16,7 +16,7 @@ router.post('/:id', async (req, res) => {
     let data = req.body;
      try {
         video = await Video.findById(req.params.id);
-        video.name = data.name, 
+        video.title = data.title, 
         video.description = data.description, 
         video.imageUrl = data.imageUrl, 
         video.isPulic = data.isPulic,

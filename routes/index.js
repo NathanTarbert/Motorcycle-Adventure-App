@@ -6,9 +6,17 @@ const Videos = require('../models/video');
 const Users = require('../models/user');
 /* GET home page. */
 router.get('/', function(req, res) {
-    Videos.find().then((video) => {
-      // console.log('details', video);
-      res.render('guest-home', { title: 'Guest Home Page', video: video, user: req.user });
+    Videos.find()
+    .then((video) => {         
+      var only3;
+      let arr = [];
+      
+      for(let i = 0; i <= 2; i++) {
+        only3 = video[i];
+        arr.push(only3);
+      } 
+      // console.log('the vids', arr);
+      res.render('guest-home', { video: arr, user: req.user });      
     });
   });
 

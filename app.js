@@ -19,6 +19,7 @@ mongoose.connect(process.env.DB_URI,  {
     pass: process.env.DB_PASS,
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    useFindAndModify: false,
   })
     .then( (res) => console.log('db connected'))
     .catch((err) => console.log(err));
@@ -46,7 +47,7 @@ var indexRouter = require('./routes/index');
 
 //authorized users
 var createRouter = require('./routes/create');
-// var enrollRouter = require('./routes/enroll');
+var enrollRouter = require('./routes/enroll');
 var detailsRouter = require('./routes/details');
 var userHomeRouter = require('./routes/user-index');
 var editRouter = require('./routes/edit');
@@ -73,7 +74,7 @@ app.use('/', indexRouter);
 
 //authorized users
 app.use('/create', createRouter);
-// app.use('/details/enroll', enrollRouter);
+app.use('/enroll', enrollRouter);
 app.use('/course-details', detailsRouter);
 app.use('/home', userHomeRouter);
 app.use('/edit', editRouter);

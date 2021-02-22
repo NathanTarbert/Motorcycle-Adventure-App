@@ -11,10 +11,14 @@ router.get('/', function(req, res) {
 router.post('/',[
     body('username')
         .trim()
+        .isAlphanumeric()
+        .withMessage('Username must contain only alphanumberic characters')
         .isLength({min: 5})
         .withMessage('Username Must Be At Least 5 Characters Long'),
     body('password')
         .trim()
+        .isAlphanumeric()
+        .withMessage('Password must contain only alphanumberic characters')
         .isLength({min: 8})
         .withMessage('Password Must Be At Least 8 Characters Long'),
     body('repeatPassword')
