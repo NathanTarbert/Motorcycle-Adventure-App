@@ -7,6 +7,7 @@ const Users = require('../models/user');
 /* GET home page. */
 router.get('/', function(req, res) {
     Videos.find()
+    .sort('-users')
     .then((video) => {         
       var only3;
       let arr = [];

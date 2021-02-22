@@ -1,5 +1,4 @@
 <section>
-    <a class="btn btn-warning ">Create Course</a>
     <form class="search float-right" action="/search/" method="GET">
         <label>Search: </label>
         <input type="text" class="search" name="search" placeholder="Search...">
@@ -7,26 +6,42 @@
     </form>
 </section>
 <br>
-<h1>{{title}}</h1>
-<div class="container mt-3">    
-    <div class="row ">
-       {{#each video}} 
-        <div class="card-deck d-flex justify-content-center">
-            <div class="card mb-4">
+
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4">Video Tutorials</h1>
+        <p class="lead">Start Self-Study Today: It Will Change Your Life</p>
+    </div>
+</div>
+<div>
+    <h1 class="text-center">Guest User: These Are The Top 3 Courses</h1>
+    <br>
+                    
+    <div class="container mt-3">
+        <div class="row ">
+        <div class="row d-flex justify-content-center">
+            
+        {{!-- THIS RENDERS EACH VIDEO BLOCK IN YOUR MONGO DB --}}
+        {{#each video}}
+        <div class="card mb-4">
+            <div class="card-deck">
                 <img class="card-img-top"
-                    src="{{this.imageUrl}}"
-                    alt="Card image cap" width="400">
-                <div class="card-body">
-                    <h4 class="card-title">{{this.title}}</h4>
-                </div>
-                <div class="card-footer">
+                        src="{{this.imageUrl}}"
+                        alt="Card image cap" width="400">
+                    <div class="card-body">
+                        <h4 class="card-title" style="text-align: center;">{{this.title}}</h4>
+                    </div>
+                    <div class="card-footer">
                     <a href="/course-details/{{_id}}"><button type="button" class="btn btn-info">Details</button></a>
                     <small class="float-right">{{this.createdAt}}</small>
-                </div>                
-            </div> 
-        {{else}} 
-            <h3 class="text-center">No courses...</h3>     
+                </div>  
+                </div>
+        </div>
+        {{!-- OR NOTHING IF NO VIDEOS FOUND... --}}
+        {{else}}
+        <h4 class="text-center">No courses...</h4>
         {{/each}}
         </div>
     </div>
 </div>
+
