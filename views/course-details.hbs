@@ -22,8 +22,10 @@
                 {{/if}}
                {{#if isEnrolled}}
                 <span class="enrolled-span">You Are Enrolled</span>
+                <a class="btn btn-warning" href="/home">Back</a>
                 {{else}}
                 <a class="enrolled-span" href="/enroll/{{video._id}}">Enroll Now</a>
+                 <a class="btn btn-warning" href="/home">Back</a>
                 {{/if}}              
             </div>
 
