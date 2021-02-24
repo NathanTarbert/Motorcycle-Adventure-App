@@ -59,6 +59,7 @@ router.post('/', [
                 title: data.title,
                 description: data.description,
                 imageUrl: data.imageUrl,
+                creator: req.user._id,
                 isPublic: false,
                 createdAt: new Date()
             });
