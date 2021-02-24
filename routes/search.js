@@ -10,8 +10,9 @@ let searchText = req.query.search;
 // console.log('search text:', searchText);
     let video;
     try {
-        const video = await Video.findOne({ title: searchText }).lean().exec(); // "lean" to get only JSON data (not Mongoose objects), faster
+        video = await Video.findOne({ title: searchText }).lean().exec(); // "lean" to get only JSON data (not Mongoose objects), faster
         console.log('Found Video :', video);
+        
         // res.status(200).json(video);
         res.render('search', { video: video, user: req.user });
     } catch(err) {
